@@ -15,18 +15,6 @@
 
 \title{Augmented Kinematics: A Machine Learning Power Model that Enables Machines to Simulate Motion}
 
-% \author{
-% \IEEEauthorblockN{Chetan Saini\textsuperscript{1}, Vridhi Kakkar\textsuperscript{2}, Saisha Dharwal\textsuperscript{3}, Kritika Gupta\textsuperscript{4}}
-% \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
-% \textit{JIMS Engineering Management Technical Campus}\\
-% Greater Noida, India}
-% \and
-% \IEEEauthorblockN{Dr. Shilpi Singh}
-% \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
-% \textit{JIMS Engineering Management Technical Campus}\\
-% Greater Noida, India}
-% }
-
 % \IEEEauthorblockN{Chetan Saini\IEEEauthorrefmark{1}, Kritika Gupta\IEEEauthorrefmark{1}, Saisha Dharwal\IEEEauthorrefmark{1}, and Vridhi Kakkar\IEEEauthorrefmark{1}}
 % \IEEEauthorblockA{\IEEEauthorrefmark{1}\textit{Department of Engineering, Institute of Advanced Mechanics, Greater Noida, India} \\
 % Email: chetansky98@gmail.com, kritikagupta361@gmail.com, dharwal.saisha2121@gmail.com, vridhikakkar08@gmail.com}
@@ -37,41 +25,35 @@
 % }
 
 \author{
-\IEEEauthorblockN{1\textsuperscript{st} Chetan Saini}
+\IEEEauthorblockN{1\textsuperscript{st} Dr. Shilpi Singh}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{JIMS Engineering Management Technical Campus}\\
+Greater Noida, India \\
+shilpisingh.gn@jagannath.org}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Chetan Saini}
 \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
 \textit{JIMS Engineering Management Technical Campus}\\
 Greater Noida, India \\
 chetansky98@gmail.com}
 \and
-\IEEEauthorblockN{2\textsuperscript{nd} Kritika Gupta}
+\IEEEauthorblockN{3\textsuperscript{rd} Kritika Gupta}
 \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
 \textit{JIMS Engineering Management Technical Campus}\\
 Greater Noida, India \\
 kritikagupta361@gmail.com}
 \and
-\IEEEauthorblockN{3\textsuperscript{rd} Saisha Dharwal}
+\IEEEauthorblockN{4\textsuperscript{th} Saisha Dharwal}
 \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
 \textit{JIMS Engineering Management Technical Campus}\\
 Greater Noida, India \\
 dharwal.saisha2121@gmail.com}
 \and
-\IEEEauthorblockN{4\textsuperscript{th} Vridhi Kakkar}
+\IEEEauthorblockN{5\textsuperscript{th} Vridhi Kakkar}
 \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
 \textit{JIMS Engineering Management Technical Campus}\\
 Greater Noida, India \\
 vridhikakkar08@gmail.com}
-% \and
-% \IEEEauthorblockN{5\textsuperscript{th} Dr. Shilpi Singh}
-% \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
-% \textit{JIMS Engineering Management Technical Campus}\\
-% Greater Noida, India \\
-% shilpisingh.gn@jagannath.org}
-% \and
-% \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-% \IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
-% \textit{JIMS Engineering Management Technical Campus}\\
-% Greater Noida, India \\
-% % email address or ORCID}
 }
 
 \maketitle
@@ -214,12 +196,12 @@ The quantitative analysis, presented in Table \ref{tab:multi_step}, confirms thi
 \begin{table}[htbp]
 \caption{Multi-Step Trajectory Rollout Performance (N=50 steps)}
 \begin{center}
-\begin{tabular}{|l|c|c|}
+\begin{tabular}{|l|r|r|}
 \hline
 \textbf{Model} & \textbf{ADE (m)} & \textbf{FDE (m)} \\
 \hline
-ANN-only & 45.82 & 121.56 \\
-Hybrid (PHY+ANN) & 0.021 & 0.045 \\
+\textbf{ANN-only} & 19.23 & 87.40 \\
+\textbf{Hybrid (PHY+ANN)} & 0.115 & 0.739 \\
 \hline
 \end{tabular}
 \label{tab:multi_step}
@@ -227,7 +209,6 @@ Hybrid (PHY+ANN) & 0.021 & 0.045 \\
 \end{table}
 
 The analysis of these results is clear: while a pure ANN can be an excellent single-step function approximator, it is not inherently stable when used in a recursive, time-stepping simulation. The physical knowledge embedded in the Hybrid model acts as a powerful regularizer or a "stabilizing backbone." The ANN component in the hybrid architecture is only responsible for learning a small correction, so its minor prediction errors do not destabilize the entire system. This demonstrates that even for simple dynamics, augmenting a physics-based model with a learned residual component is a vastly superior strategy for building robust and reliable simulators.
-
 \section{Discussion}
 The experimental results provide clear insights into the strengths and weaknesses of different modeling paradigms for physical simulation. This section interprets these findings, acknowledges the project's limitations, and outlines promising directions for future work.
 
@@ -247,7 +228,7 @@ While this project successfully demonstrates the value of the hybrid approach, i
 \subsection{Future Work and Applications}
 The limitations of this work naturally lead to several promising avenues for future research, aligning with the broader objectives outlined in the initial project proposal \cite{b3}.
 \begin{itemize}
-    \item \textbf{Extension to Higher Dimensions and Complex Physics:} The immediate next step is to apply the hybrid framework to 2D and 3D motion, incorporating additional forces like gravity, friction, and spring dynamics. This would test the scalability of the approach and its ability to learn more complex residual functions.
+    \item \textbf{Higher Dimensions and Complex Physics:} The immediate next step is to apply the hybrid framework to 2D and 3D motion, incorporating additional forces like gravity, friction, and spring dynamics. This would test the scalability of the approach and its ability to learn more complex residual functions.
     \item \textbf{Integration with Real-World Data:} A crucial step towards practical application is to train and validate the models using data captured from physical sensors (e.g., motion capture systems, IMUs). This would test the models' robustness to noise and their ability to learn residuals corresponding to real-world unmodeled effects.
     \item \textbf{Advanced Model Architectures:} Future work should explore the use of recurrent neural networks (RNNs) to provide the models with memory of past states, which could improve predictions for systems with time-dependent dynamics.
     \item \textbf{Interactive Simulation in Unity:} As proposed in the project synopsis, integrating the trained hybrid model into a game engine like Unity would enable the creation of interactive educational simulations. Users could manipulate parameters like initial velocity or mass via UI sliders and observe the resulting motion in real-time, providing a tangible application for the developed framework \cite{b2}.
